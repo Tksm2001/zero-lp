@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>最初の1円を稼いだ瞬間、すべてが変わります | あいりの話</title>
+<meta name="description" content="130万円の教材も、やる気が続かなければ意味がない。スマホ1台・1日30分。0→1さえ越えれば、あとは楽しくなるだけ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== リセット & 変数 ===== */
+:root {
+  --bg:        #FDFBF7;
+  --bg2:       #F5F0E8;
+  --bg3:       #EDE8DF;
+  --card:      #FFFFFF;
+  --text:      #1A1714;
+  --text2:     #5C5650;
+  --text3:     #9C9490;
+  --gold:      #B8860B;
+  --gold-l:    #C9A84C;
+  --gold-pale: #FDF3DC;
+  --gold-border: rgba(184,134,11,0.25);
+  --line:      #06C755;
+  --border:    rgba(0,0,0,0.08);
+  --shadow:    0 2px 16px rgba(0,0,0,0.07);
+  --shadow-l:  0 8px 40px rgba(0,0,0,0.10);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== ユーティリティ ===== */
+.container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+.serif { font-family: 'Noto Serif JP', serif; }
+
+/* ===== フェードイン ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== トップバー ===== */
+.top-bar {
+  background: var(--gold-pale);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar strong { color: #9B6E00; }
+
+/* ===== ヒーローセクション ===== */
+.hero {
+  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+  padding: 64px 20px 56px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.hero-icon-wrap {
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-l);
+  box-shadow: 0 4px 24px rgba(184,134,11,0.2);
+  margin-bottom: 20px;
+}
+.hero-icon-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.hero-name {
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.hero-catch {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(22px, 5vw, 34px);
+  font-weight: 900;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.hero-catch .accent {
+  color: var(--gold);
+  display: block;
+}
+.hero-catch .sub-accent {
+  font-size: 0.75em;
+  color: var(--text2);
+  font-weight: 400;
+  display: block;
+  margin-top: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 20px 0 28px;
+}
+.hero-tag {
+  padding: 5px 14px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-pale);
+  font-size: 12px;
+  color: var(--gold);
+  border-radius: 20px;
+}
+.scroll-hint {
+  font-size: 12px;
+  color: var(--text3);
+  animation: bounce 2s infinite;
+}
+.scroll-hint::after { content: ' ↓'; }
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* ===== セクション共通 ===== */
+.section { padding: 64px 0; }
+.section + .section { border-top: 1px solid var(--border); }
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+/* ===== 共感ブロック ===== */
+.empathy { background: var(--bg); }
+.empathy-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.empathy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold-l);
+  box-shadow: var(--shadow);
+}
+.empathy-item .mark {
+  color: var(--gold);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.empathy-item p { font-size: 14px; line-height: 1.8; color: var(--text2); }
+.empathy-item p strong { color: var(--text); }
+.empathy-bottom {
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+}
+.empathy-bottom p { font-size: 15px; line-height: 2; color: var(--text2); }
+.empathy-bottom strong { color: var(--gold); font-size: 17px; }
+
+/* ===== Beforeストーリー ===== */
+.before-section { background: var(--bg2); }
+.before-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-l);
+}
+.story-text { font-size: 15px; line-height: 2.1; color: var(--text2); }
+.story-text p { margin-bottom: 20px; }
+.story-text .hl { color: var(--text); font-weight: 700; }
+.story-text .gold-hl { color: var(--gold); font-weight: 700; }
+.quote-box {
+  margin: 24px 0;
+  padding: 20px 24px;
+  border-left: 3px solid var(--gold-l);
+  background: var(--card);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 2;
+  box-shadow: var(--shadow);
+}
+
+/* ===== 転換点（フェーズ構造） ===== */
+.turning { background: var(--bg); }
+.phase-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 28px 0;
+}
+.phase-step {
+  display: flex;
+  gap: 0;
+}
+.phase-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+  flex-shrink: 0;
+}
+.phase-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(184,134,11,0.3);
+}
+.phase-connector {
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold-l), var(--gold-border));
+  flex: 1;
+  min-height: 20px;
+  margin: 4px 0;
+}
+.phase-content {
+  flex: 1;
+  padding: 6px 0 32px 16px;
+}
+.phase-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.phase-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.phase-desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+.catchcopy-box {
+  margin: 32px 0 0;
+  padding: 28px 24px;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-border);
+  text-align: center;
+}
+.catchcopy-box p {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(15px, 3vw, 18px);
+  line-height: 2;
+  color: var(--text);
+}
+.catchcopy-box .large {
+  font-size: clamp(17px, 3.5vw, 22px);
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  margin-top: 12px;
+}
+
+/* ===== Afterセクション ===== */
+.after-section { background: var(--bg2); }
+.after-image-main {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-l);
+}
+.after-image-sub {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+.after-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+  margin-top: 24px;
+}
+.after-card p {
+  font-size: 15px;
+  line-height: 2.1;
+  color: var(--text2);
+}
+.after-card p + p { margin-top: 16px; }
+.after-card .hl { color: var(--text); font-weight: 700; }
+.after-card .gold-hl { color: var(--gold); font-weight: 700; }
+
+/* ===== プレゼントセクション ===== */
+.gift-section { background: var(--bg); }
+.gift-box {
+  border: 1px solid var(--gold-border);
+  padding: 36px 24px 28px;
+  background: var(--card);
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-l);
+}
+.gift-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 20px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.gift-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 12px 0 6px;
+}
+.gift-subtitle { font-size: 12px; color: var(--text3); margin-bottom: 24px; }
+.gift-contents {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.gift-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text2);
+}
+.gift-item .icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+/* ===== LINE CTA ===== */
+.cta-section { background: var(--bg2); }
+.cta-inner {
+  padding: 36px 24px;
+  background: var(--card);
+  border: 1px solid rgba(6,199,85,0.25);
+  box-shadow: var(--shadow-l);
+  text-align: center;
+}
+.cta-sub { font-size: 13px; color: var(--text3); margin-bottom: 24px; }
+.line-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--line);
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(6,199,85,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.05em;
+}
+.line-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(6,199,85,0.4);
+}
+.line-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
+.qr-wrap { margin-top: 24px; }
+.qr-wrap img {
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgba(6,199,85,0.3);
+  border-radius: 8px;
+  padding: 4px;
+  background: white;
+}
+.qr-caption { font-size: 11px; color: var(--text3); margin-top: 8px; }
+.scarcity-box {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: #FFF5F5;
+  border: 1px solid rgba(200,80,80,0.2);
+  font-size: 13px;
+  color: #C05050;
+}
+.scarcity-box strong { color: #A03030; }
+
+/* ===== 免責 & フッター ===== */
+.disclaimer {
+  padding: 36px 20px;
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+}
+.disclaimer p {
+  font-size: 11px;
+  color: var(--text3);
+  line-height: 1.9;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text3);
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+}
+
+/* ===== 仕切り ===== */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+
+/* ===== スティッキーLINEボタン ===== */
+.sticky-line {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(253,251,247,0.96);
+  border-top: 1px solid rgba(6,199,85,0.2);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.10);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  backdrop-filter: blur(8px);
+}
+.sticky-line.show { transform: translateY(0); }
+.sticky-line-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--line);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+  letter-spacing: 0.05em;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sticky-line-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(6,199,85,0.45); }
+.sticky-line-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+.sticky-line-label { font-size: 10px; opacity: 0.85; display: block; font-weight: 400; margin-top: 1px; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 480px) {
+  .phase-dot { width: 30px; height: 30px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- トップバー -->
+<div class="top-bar">
+  ⚠ 今月の個別サポート枠 <strong>残り7名</strong> — 登録者だけに7日間ロードマップをお届け
+</div>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-icon-wrap fade-in">
+    <img src="https://lh3.googleusercontent.com/d/1XZujI6Bkk0DEZh9J1emnUWoqGRBG90sO" alt="あいり" loading="eager">
+  </div>
+  <p class="hero-name fade-in">2児の母 / 元パート主婦 あいり</p>
+  <h1 class="hero-catch fade-in">
+    最初の目標は、月5万じゃなくていい。
+    <span class="accent">最初の1円を稼いだ瞬間、<br>すべてが変わります。</span>
+    <span class="sub-accent">スマホ1台 ／ 1日30分 ／ 副業未経験でも</span>
+  </h1>
+  <div class="hero-tags fade-in">
+    <span class="hero-tag">30代ママ</span>
+    <span class="hero-tag">0→1 が最初のゴール</span>
+    <span class="hero-tag">1日30分から</span>
+    <span class="hero-tag">楽しくなるから続く</span>
+  </div>
+  <p class="scroll-hint fade-in">あいりの話を読む</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- 共感セクション -->
+<section class="section empathy">
+  <div class="container">
+    <p class="section-label fade-in">あなたへ</p>
+    <h2 class="section-title fade-in">この気持ち、<br>どれかひとつ当てはまりますか？</h2>
+    <ul class="empathy-list">
+      <li class="empathy-item fade-in">
+        <span class="mark">▎</span>
+        <p>副業に興味はあるけど、<strong>何をすればいいかわからない</strong><br>調べても難しそうで最初の一歩が踏み出せない</p>
+      </li>
+      <li class="empathy-item fade-in">
+        <span class="mark">▎</span>
+        <p><strong>お金をかけて学んだのに続かなかった</strong>経験がある<br>「私には向いてないのかも」と諦めかけている</p>
+      </li>
+      <li class="empathy-item fade-in">
+        <span class="mark">▎</span>
+        <p>毎月の生活費が<strong>ギリギリで、子供に我慢させている</strong><br>でもパートを増やす体力はもう残っていない</p>
+      </li>
+      <li class="empathy-item fade-in">
+        <span class="mark">▎</span>
+        <p>「月に数万でいい、<strong>ほんの少し余裕が欲しいだけ</strong>」<br>それさえ実現できれば、毎日が変わると感じている</p>
+      </li>
+    </ul>
+    <div class="empathy-bottom fade-in">
+      <p>
+        1年前の私も、<strong>まったく同じでした。</strong><br>
+        その話を少しだけ聞いてください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Beforeストーリー -->
+<section class="section before-section">
+  <div class="container">
+    <p class="section-label fade-in">1年前の私</p>
+    <h2 class="section-title fade-in">
+      お金をかけて学んでも<br>続かなかった、あの頃
+    </h2>
+    <img
+      src="https://lh3.googleusercontent.com/d/1VqaaGE05_MyToSsEnN56AsHTnOtPJeUT"
+      alt="あいりのBefore"
+      class="before-image fade-in"
+      loading="lazy"
+    >
+    <div class="story-text fade-in">
+      <p>
+        「このままじゃいけない」と思って、
+        <span class="hl">副業の教材に130万円を投資したことがあります。</span>
+        内容は確かに充実していました。
+      </p>
+      <p>
+        でも続かなかった。<br>
+        子育て・パート・家事の合間に取り組もうとしても、
+        <span class="hl">自分の時間とやる気が追いつかなかった。</span>
+        結局、ほとんど手をつけないまま時間だけが過ぎていきました。
+      </p>
+      <div class="quote-box">
+        「問題は教材じゃなかった。<br>
+        自分が動けるやり方を、知らなかっただけだった。」
+      </div>
+      <p>
+        そう気づいたとき、
+        <span class="gold-hl">考え方をまるごと変えることにしました。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 転換点・フェーズ構造 -->
+<section class="section turning">
+  <div class="container">
+    <p class="section-label fade-in">転換点</p>
+    <h2 class="section-title fade-in">
+      「月5万を目指す」をやめたら<br>すべてが動き始めた
+    </h2>
+    <div class="phase-flow">
+      <div class="phase-step fade-in">
+        <div class="phase-line">
+          <div class="phase-dot">1</div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <span class="phase-tag">PHASE 1 — 最初のゴール</span>
+          <p class="phase-title">最初の1円を稼ぐことだけ考える</p>
+          <p class="phase-desc">
+            月5万・月10万は、あとでいい。<br>
+            「スマホで1円を稼いだ」という事実だけを<br>まず作ることに集中しました。
+          </p>
+        </div>
+      </div>
+      <div class="phase-step fade-in">
+        <div class="phase-line">
+          <div class="phase-dot">2</div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <span class="phase-tag">PHASE 2 — 0→1の壁を越えた瞬間</span>
+          <p class="phase-title">世界が、変わった</p>
+          <p class="phase-desc">
+            最初の収益通知が来たとき、<br>
+            「あ、これは本当に動く仕組みなんだ」と体で理解しました。<br>
+            その瞬間から、やる気の質が変わりました。
+          </p>
+        </div>
+      </div>
+      <div class="phase-step fade-in">
+        <div class="phase-line">
+          <div class="phase-dot">3</div>
+        </div>
+        <div class="phase-content">
+          <span class="phase-tag">PHASE 3 — その先</span>
+          <p class="phase-title">あとは「楽しくなる」だけ</p>
+          <p class="phase-desc">
+            数字は自然についてきます。<br>
+            楽しいから続く。続くから増える。<br>
+            どこまで行くかは、あなた次第です。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="catchcopy-box fade-in">
+      <p>
+        0→1さえ越えれば、<br>どこまで行くかはあなた次第。
+        <span class="large">楽しくてやめられなくなるから。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- After -->
+<section class="section after-section">
+  <div class="container">
+    <p class="section-label fade-in">今の私</p>
+    <h2 class="section-title fade-in">
+      子供に「いいよ」と<br>すぐ言えるようになった
+    </h2>
+    <img
+      src="https://lh3.googleusercontent.com/d/1Tk-02OxzqKQj-Prf0uc1vVw9MEB3NKGh"
+      alt="あいりのAfter"
+      class="after-image-main fade-in"
+      loading="lazy"
+    >
+    <img
+      src="https://lh3.googleusercontent.com/d/1pnFI_quFETHxfA7q5Y0_I4XOb02sWQig"
+      alt="あいりの豊かな生活"
+      class="after-image-sub fade-in"
+      loading="lazy"
+    >
+    <div class="after-card fade-in">
+      <p>
+        夫が最近こう言いました。<br>
+        <span class="hl">「なんか最近、楽しそうだね」</span>
+      </p>
+      <p>
+        お金の余裕は、心の余裕になりました。<br>
+        子供の「やりたい」に、すぐ「いいよ」と言える。<br>
+        <span class="gold-hl">それだけで、私の毎日は大きく変わりました。</span>
+      </p>
+      <p>
+        あなたにも、この感覚を体験してほしい。<br>
+        だから、私が最初にやった<span class="hl">7日間の手順</span>を<br>
+        まとめて無料でお渡しします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- プレゼント -->
+<section class="section gift-section">
+  <div class="container">
+    <p class="section-label fade-in">無料プレゼント</p>
+    <div class="gift-box fade-in">
+      <div class="gift-badge">LINE登録者だけにお届け</div>
+      <h2 class="gift-title">
+        月50,000円稼ぐための<br>最初の7日間ロードマップ
+      </h2>
+      <p class="gift-subtitle">PDF全8ページ ／ 完全無料</p>
+      <div class="gift-contents">
+        <div class="gift-item">
+          <span class="icon">✦</span>
+          <span>DAY1〜7の具体的アクションリスト（コピペ可）</span>
+        </div>
+        <div class="gift-item">
+          <span class="icon">✦</span>
+          <span>初案件獲得のための提案文テンプレート</span>
+        </div>
+        <div class="gift-item">
+          <span class="icon">✦</span>
+          <span>AI×スマホで作業を10倍速にするプロンプト集</span>
+        </div>
+        <div class="gift-item">
+          <span class="icon">✦</span>
+          <span>0→1を越えてから収益を伸ばす設計図</span>
+        </div>
+        <div class="gift-item">
+          <span class="icon">✦</span>
+          <span>続けるための「やる気に頼らない仕組み」</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LINE CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <p class="section-label fade-in">無料で受け取る</p>
+    <h2 class="section-title fade-in">
+      まず、最初の1円を<br>一緒に稼ぎにいきましょう
+    </h2>
+    <div class="cta-inner fade-in">
+      <p class="cta-sub">LINEを追加するだけ。費用は完全無料です。</p>
+      <a href="https://line.me/R/ti/p/@196wxyul" class="line-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+        LINEで無料登録する
+      </a>
+      <div class="qr-wrap">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40196wxyul"
+          alt="LINE QRコード @196wxyul"
+          loading="lazy"
+        >
+        <p class="qr-caption">QRコードでも追加できます</p>
+      </div>
+      <div class="scarcity-box">
+        ⚠ 現在、個別サポートは <strong>今月残り7名</strong> のみ受付中です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 免責事項 -->
+<div class="disclaimer">
+  <p>
+    ※ 本ページに記載の内容は個人の経験に基づくものです。収益の増加を保証するものではありません。
+    副業に取り組む際は、ご自身の状況・リスクをご確認の上、自己責任にてご判断ください。
+  </p>
+</div>
+
+<footer>
+  <p>© 2025 ZERO PROJECT. All rights reserved.</p>
+</footer>
+
+<!-- スティッキーLINEボタン -->
+<div class="sticky-line" id="stickyLine">
+  <a href="https://line.me/R/ti/p/@196wxyul" class="sticky-line-btn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+    </svg>
+    <span>LINEで無料登録する<span class="sticky-line-label">7日間ロードマップを無料でお届け</span></span>
+  </a>
+</div>
+
+<!-- スクロールアニメーション + スティッキー制御 -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// スティッキーボタン：ヒーロー通過後に表示、CTAセクション内では非表示
+const stickyLine = document.getElementById('stickyLine');
+const hero = document.querySelector('.hero');
+const cta = document.querySelector('.cta-section');
+const stickyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.target === hero) {
+      if (!entry.isIntersecting) stickyLine.classList.add('show');
+      else stickyLine.classList.remove('show');
+    }
+    if (entry.target === cta) {
+      if (entry.isIntersecting) stickyLine.classList.remove('show');
+      else if (!hero.getBoundingClientRect().bottom > 0) stickyLine.classList.add('show');
+    }
+  });
+}, { threshold: 0.1 });
+stickyObserver.observe(hero);
+stickyObserver.observe(cta);
+</script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 <meta name="description" content="130万円の教材も、やる気が続かなければ意味がない。スマホ1台・1日30分。0→1さえ越えれば、あとは楽しくなるだけ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ===== リセット & 変数 ===== */
 :root {
@@ -33,14 +33,26 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.8;
   overflow-x: hidden;
 }
 
+/* ===== 見出し全体：極太＋字間 ===== */
+h1, h2, h3, h4 {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+/* 本文強調は500止まり（軽さを維持） */
+strong { font-weight: 500; }
+
 /* ===== ユーティリティ ===== */
 .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
-.serif { font-family: 'Noto Serif JP', serif; }
+.serif { font-family: 'Shippori Mincho', serif; font-weight: 800; letter-spacing: 0.05em; }
 
 /* ===== フェードイン ===== */
 .fade-in {
@@ -90,9 +102,10 @@ body {
   margin-bottom: 16px;
 }
 .hero-catch {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: clamp(22px, 5vw, 34px);
-  font-weight: 900;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   line-height: 1.55;
   color: var(--text);
   margin-bottom: 12px;
@@ -147,9 +160,10 @@ body {
   text-transform: uppercase;
 }
 .section-title {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: clamp(20px, 4vw, 28px);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   text-align: center;
   line-height: 1.55;
   color: var(--text);
@@ -210,7 +224,7 @@ body {
   padding: 20px 24px;
   border-left: 3px solid var(--gold-l);
   background: var(--card);
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: 15px;
   color: var(--text2);
   line-height: 2;
@@ -269,9 +283,10 @@ body {
   margin-bottom: 6px;
 }
 .phase-title {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: clamp(16px, 3vw, 20px);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   color: var(--text);
   line-height: 1.5;
   margin-bottom: 8px;
@@ -289,7 +304,7 @@ body {
   text-align: center;
 }
 .catchcopy-box p {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: clamp(15px, 3vw, 18px);
   line-height: 2;
   color: var(--text);
@@ -356,9 +371,10 @@ body {
   white-space: nowrap;
 }
 .gift-title {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Shippori Mincho', serif;
   font-size: clamp(18px, 4vw, 24px);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   color: var(--text);
   line-height: 1.6;
   margin: 12px 0 6px;
@@ -379,6 +395,38 @@ body {
   color: var(--text2);
 }
 .gift-item .icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+/* ===== Canva画像パーツスロット ===== */
+.canva-banner {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  box-shadow: var(--shadow-l);
+  margin: 0 auto 0;
+  max-width: 680px;
+}
+/* プレースホルダー表示（Canva画像差し替え前） */
+.canva-placeholder {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto 32px;
+  aspect-ratio: 16 / 5;
+  background: var(--gold-pale);
+  border: 2px dashed var(--gold-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+.canva-placeholder .cp-icon { font-size: 28px; opacity: 0.5; }
+.canva-placeholder span { opacity: 0.7; }
+/* 差し替え後はプレースホルダーを非表示にするためのユーティリティ */
+.canva-slot { margin-bottom: 32px; }
 
 /* ===== LINE CTA ===== */
 .cta-section { background: var(--bg2); }
@@ -535,6 +583,18 @@ footer {
 </section>
 
 <div class="divider"></div>
+
+<!-- ▼ Canva画像スロット①：ヒーロー直下バナー（横長16:5）
+     Canvaで「横長バナー」を作成 → PNG書き出し → src に画像パスを入れると表示されます
+     例: <img class="canva-banner" src="images/canva-hero-banner.png" alt="あいりの副業ストーリー">
+     ※画像が準備できたら下の .canva-placeholder ブロックを上記 img タグに差し替えてください -->
+<div class="container canva-slot">
+  <div class="canva-placeholder">
+    <span class="cp-icon">🖼</span>
+    <span>Canva バナー画像（ヒーロー直下）</span>
+    <span style="font-size:11px;opacity:.5">16:5 推奨 ／ PNG書き出し後にここへ差し替え</span>
+  </div>
+</div>
 
 <!-- 共感セクション -->
 <section class="section empathy">
@@ -716,6 +776,17 @@ footer {
 <section class="section gift-section">
   <div class="container">
     <p class="section-label fade-in">無料プレゼント</p>
+    <!-- ▼ Canva画像スロット②：プレゼントセクション上部（正方形or4:3）
+         Canvaで「プレゼント表紙画像」を作成 → PNG書き出し → src に画像パスを入れると表示されます
+         例: <img class="canva-banner fade-in" src="images/canva-gift-cover.png" alt="7日間ロードマップ表紙">
+         ※画像が準備できたら下の .canva-placeholder ブロックを上記 img タグに差し替えてください -->
+    <div class="canva-slot fade-in">
+      <div class="canva-placeholder" style="aspect-ratio:4/3">
+        <span class="cp-icon">🖼</span>
+        <span>Canva プレゼント表紙画像</span>
+        <span style="font-size:11px;opacity:.5">4:3 推奨 ／ PNG書き出し後にここへ差し替え</span>
+      </div>
+    </div>
     <div class="gift-box fade-in">
       <div class="gift-badge">LINE登録者だけにお届け</div>
       <h2 class="gift-title">

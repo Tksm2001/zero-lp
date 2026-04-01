@@ -396,37 +396,153 @@ strong { font-weight: 500; }
 }
 .gift-item .icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 
-/* ===== Canva画像パーツスロット ===== */
-.canva-banner {
-  width: 100%;
-  display: block;
-  border-radius: 4px;
-  box-shadow: var(--shadow-l);
-  margin: 0 auto 0;
-  max-width: 680px;
+/* ===== ヒーロー直下デザインバナー ===== */
+.hero-design-banner {
+  background: linear-gradient(135deg, #2C1F0E 0%, #1A1208 100%);
+  padding: 0;
+  overflow: hidden;
 }
-/* プレースホルダー表示（Canva画像差し替え前） */
-.canva-placeholder {
-  width: 100%;
+.hdb-inner {
   max-width: 680px;
-  margin: 0 auto 32px;
-  aspect-ratio: 16 / 5;
-  background: var(--gold-pale);
-  border: 2px dashed var(--gold-border);
-  border-radius: 4px;
+  margin: 0 auto;
+  padding: 28px 24px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+.hdb-ornament {
+  color: var(--gold-l);
+  font-size: 22px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.hdb-main {
+  text-align: center;
+  flex: 1;
+}
+.hdb-label {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--gold-l);
+  margin-bottom: 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+.hdb-copy {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(14px, 3vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #F5EDD8;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.hdb-copy em {
+  color: var(--gold-l);
+  font-style: normal;
+}
+.hdb-sub {
+  font-size: 12px;
+  color: rgba(245,237,216,0.55);
+  letter-spacing: 0.05em;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+
+/* ===== プレゼント表紙デザインカード ===== */
+.gift-cover {
+  border: 1px solid var(--gold-border);
+  background: linear-gradient(160deg, #2C1F0E 0%, #1A1208 60%, #0D0904 100%);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+  position: relative;
+}
+.gift-cover::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(184,134,11,0.25);
+  pointer-events: none;
+}
+.gc-header {
+  background: var(--gold);
+  padding: 10px 0;
+  text-align: center;
+}
+.gc-free {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff;
+}
+.gc-body {
+  padding: 36px 28px 28px;
+  text-align: center;
+}
+.gc-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold-l);
+  margin-bottom: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+.gc-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #F5EDD8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.gc-title em {
+  color: var(--gold-l);
+  font-style: normal;
+}
+.gc-desc {
+  font-size: 13px;
+  color: rgba(245,237,216,0.6);
+  letter-spacing: 0.1em;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.gc-days {
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  color: var(--gold);
-  font-size: 13px;
-  letter-spacing: 0.1em;
+  gap: 10px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold-l);
+  letter-spacing: 0.15em;
+  padding: 14px 0;
+  border-top: 1px solid rgba(184,134,11,0.2);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
 }
-.canva-placeholder .cp-icon { font-size: 28px; opacity: 0.5; }
-.canva-placeholder span { opacity: 0.7; }
-/* 差し替え後はプレースホルダーを非表示にするためのユーティリティ */
-.canva-slot { margin-bottom: 32px; }
+.gc-arrow {
+  color: rgba(184,134,11,0.4);
+  font-size: 12px;
+}
+.gc-footer {
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 11px;
+  color: rgba(245,237,216,0.4);
+  letter-spacing: 0.1em;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+.gc-dot { color: var(--gold-l); opacity: 0.4; }
 
 /* ===== LINE CTA ===== */
 .cta-section { background: var(--bg2); }
@@ -584,15 +700,16 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ▼ Canva画像スロット①：ヒーロー直下バナー（横長16:5）
-     Canvaで「横長バナー」を作成 → PNG書き出し → src に画像パスを入れると表示されます
-     例: <img class="canva-banner" src="images/canva-hero-banner.png" alt="あいりの副業ストーリー">
-     ※画像が準備できたら下の .canva-placeholder ブロックを上記 img タグに差し替えてください -->
-<div class="container canva-slot">
-  <div class="canva-placeholder">
-    <span class="cp-icon">🖼</span>
-    <span>Canva バナー画像（ヒーロー直下）</span>
-    <span style="font-size:11px;opacity:.5">16:5 推奨 ／ PNG書き出し後にここへ差し替え</span>
+<!-- ヒーロー直下 デザインバナー -->
+<div class="hero-design-banner fade-in">
+  <div class="hdb-inner">
+    <span class="hdb-ornament">✦</span>
+    <div class="hdb-main">
+      <p class="hdb-label">AIRI'S STORY</p>
+      <p class="hdb-copy">130万円の教材も、<em>続けられなければ意味がない。</em></p>
+      <p class="hdb-sub">スマホ1台・1日30分。最初の1円が、人生を変えた。</p>
+    </div>
+    <span class="hdb-ornament">✦</span>
   </div>
 </div>
 
@@ -776,15 +893,27 @@ footer {
 <section class="section gift-section">
   <div class="container">
     <p class="section-label fade-in">無料プレゼント</p>
-    <!-- ▼ Canva画像スロット②：プレゼントセクション上部（正方形or4:3）
-         Canvaで「プレゼント表紙画像」を作成 → PNG書き出し → src に画像パスを入れると表示されます
-         例: <img class="canva-banner fade-in" src="images/canva-gift-cover.png" alt="7日間ロードマップ表紙">
-         ※画像が準備できたら下の .canva-placeholder ブロックを上記 img タグに差し替えてください -->
-    <div class="canva-slot fade-in">
-      <div class="canva-placeholder" style="aspect-ratio:4/3">
-        <span class="cp-icon">🖼</span>
-        <span>Canva プレゼント表紙画像</span>
-        <span style="font-size:11px;opacity:.5">4:3 推奨 ／ PNG書き出し後にここへ差し替え</span>
+    <!-- プレゼント表紙 デザインカード -->
+    <div class="gift-cover fade-in">
+      <div class="gc-header">
+        <span class="gc-free">無料プレゼント</span>
+      </div>
+      <div class="gc-body">
+        <p class="gc-eyebrow">LINE登録者限定</p>
+        <h3 class="gc-title">月50,000円稼ぐための<br><em>最初の7日間</em><br>ロードマップ</h3>
+        <p class="gc-desc">AI記事生成 × クラウドワークス完全攻略</p>
+        <div class="gc-days">
+          <span>DAY1</span><span class="gc-arrow">→</span>
+          <span>DAY3</span><span class="gc-arrow">→</span>
+          <span>DAY7</span>
+        </div>
+      </div>
+      <div class="gc-footer">
+        <span>あいり 監修</span>
+        <span class="gc-dot">·</span>
+        <span>PDF全8ページ</span>
+        <span class="gc-dot">·</span>
+        <span>完全無料</span>
       </div>
     </div>
     <div class="gift-box fade-in">
